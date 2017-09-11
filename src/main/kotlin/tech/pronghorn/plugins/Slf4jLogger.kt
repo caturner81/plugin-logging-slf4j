@@ -7,15 +7,15 @@ class Slf4jLogger(override val name: String) : Logger() {
     private val logger = LoggerFactory.getLogger(name)
 
     override val isTraceEnabled: Boolean
-            get() = logger.isTraceEnabled
+        get() = logger.isTraceEnabled
     override val isDebugEnabled: Boolean
-            get() = logger.isDebugEnabled
+        get() = logger.isDebugEnabled
     override val isInfoEnabled: Boolean
-            get() = logger.isInfoEnabled
+        get() = logger.isInfoEnabled
     override val isWarnEnabled: Boolean
-            get() = logger.isWarnEnabled
+        get() = logger.isWarnEnabled
     override val isErrorEnabled: Boolean
-            get() = logger.isErrorEnabled
+        get() = logger.isErrorEnabled
 
     override fun trace(message: String) = logger.trace(message)
     override fun debug(message: String) = logger.debug(message)
