@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        kotlin_version = '1.1.4'
+        kotlinVersion = '1.1.4'
     }
 
     repositories {
@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0'
     }
 }
@@ -18,6 +18,28 @@ version '0.1.0'
 
 apply plugin: 'kotlin'
 apply plugin: 'org.junit.platform.gradle.plugin'
+apply plugin: 'maven'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom {
+                artifactId = 'plugin-logging-slf4j'
+            }
+            pom.project {
+                name 'Pronghorn HTTP Server SLF4J Logging Plugin'
+                packaging 'jar'
+                description 'A plugin for the Pronghorn HTTP Server utilizing SLF4J for logging.'
+                url 'https://pronghorn.tech'
+                scm {
+                    url 'https://github.com/pronghorn-tech/plugin-logging-slf4j.git'
+                    connection 'scm:git@github.com:pronghorn-tech/plugin-logging-slf4j.git'
+                    developerConnection 'scm:git@github.com:pronghorn-tech/plugin-logging-slf4j.git'
+                }
+            }
+        }
+    }
+}
 
 repositories {
     mavenCentral()
@@ -25,7 +47,7 @@ repositories {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     compile "tech.pronghorn:common:$version"
     compile 'org.slf4j:slf4j-api:1.7.25'
 
