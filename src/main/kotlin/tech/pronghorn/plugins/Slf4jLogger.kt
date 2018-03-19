@@ -19,7 +19,7 @@ package tech.pronghorn.plugins
 import org.slf4j.LoggerFactory
 import tech.pronghorn.logging.Logger
 
-class Slf4jLogger(override val name: String) : Logger() {
+public class Slf4jLogger(override val name: String) : Logger() {
     private val logger = LoggerFactory.getLogger(name)
 
     override val isTraceEnabled: Boolean
@@ -33,9 +33,9 @@ class Slf4jLogger(override val name: String) : Logger() {
     override val isErrorEnabled: Boolean
         get() = logger.isErrorEnabled
 
-    override fun trace(message: String) = logger.trace(message)
-    override fun debug(message: String) = logger.debug(message)
-    override fun info(message: String) = logger.info(message)
-    override fun warn(message: String) = logger.warn(message)
-    override fun error(message: String) = logger.error(message)
+    override fun traceImpl(message: String) = logger.trace(message)
+    override fun debugImpl(message: String) = logger.debug(message)
+    override fun infoImpl(message: String) = logger.info(message)
+    override fun warnImpl(message: String) = logger.warn(message)
+    override fun errorImpl(message: String) = logger.error(message)
 }
